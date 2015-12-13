@@ -1,0 +1,23 @@
+!!!html5
+%html
+  %head
+    %title ご注文は何のアニメですか？
+    %link(rel='stylesheet' href='/css/bootstrap.min.css')
+    %link(rel='shortcut icon' href='/img/favicon.ico')
+  %body
+    %hr
+      %div.container{:align => "center"}
+        %p is order a anime?
+    %hr
+    %div.container{:align => "center"}
+      %h1 あなたのTwitterアカウントIDを入力してください
+      %form{:action => "./upload", :method => "post", :enctype => "multipart/form-data"}
+        %textarea{:name => 'input_desc', :rows => 1, :placeholder => "@以下の文字列", :maxlength => 15, :style => "resize:none;"}
+        %br
+        %button{:type => "submit", :name => "submit", :css => "btn btn-default btn-lg"}
+          %span.glyphicon.icon-upload
+          送信
+
+
+      %p 推薦対象：2015年秋期のアニメ作品
+      %p 2015年10月~12月のアニメに関する呟きデータを元に、あなたが今までに呟いていないアニメを推薦します
