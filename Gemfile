@@ -6,4 +6,4 @@ gem "unicorn"
 gem 'haml'
 gem 'rerun'
 gem 'sequel'
-
+gem 'shangrila'
