@@ -28,10 +28,12 @@
         - bar_name = 'warning' if bar_score > 5
         - bar_name = 'info' if bar_score > 25
         - bar_name = 'success' if bar_score > 75
+        <div style="float:left;">
         <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
-        <div class="progress">
-        <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%">
-        お薦めスコア #{score}
+        <div class="progress"  style="width:170px">
+        <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%;color:#000000">
+        Score:#{score}
+        </div>
         </div>
         </div>
     %div.container{:align => "center"}
@@ -41,12 +43,15 @@
         - bar_score = unit[:rate].to_i * 10
         - bar_score = bar_score * -1 if bar_score < 0
         - bar_name = 'danger'
+        <div style="float:left;">
         <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
-        <div class="progress">
-        <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%">
-        お薦めスコア #{score}
+        <div class="progress"  style="width:170px;">
+        <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%;color:#000000">
+        Score:#{score}
+        </div>
         </div>
         </div>
 
+      <p style="clear:both;">
       %p 推薦対象：2015年秋期のアニメ作品
-      %p 2015年10月~12月のアニメに関する呟きデータを元に、あなたが今までに呟いていないアニメを推薦します
+      %p 2015年10月~12月のアニメに関する呟きデータを元に、あなたにお薦めなアニメを推薦します
