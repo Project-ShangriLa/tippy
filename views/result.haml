@@ -23,16 +23,30 @@
     %div.container{:align => "center"}
       %h2= @id + "にお薦めな作品"
       - (@prediction).each do |unit|
+        - score = sprintf('%.2f', unit[:rate])
+        - bar_score = unit[:rate].to_i * 10
+        - bar_name = 'warning' if bar_score > 5
+        - bar_name = 'info' if bar_score > 25
+        - bar_name = 'success' if bar_score > 75
         <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
         <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-        お薦めスコア #{unit[:rate]}
+        <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%">
+        お薦めスコア #{score}
         </div>
         </div>
     %div.container{:align => "center"}
       %h2= @id + "にお薦めしない作品"
       - (@un_prediction).each do |unit|
+        - score = sprintf('%.2f', unit[:rate])
+        - bar_score = unit[:rate].to_i * 10
+        - bar_score = bar_score * -1 if bar_score < 0
+        - bar_name = 'danger'
         <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
+        <div class="progress">
+        <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%">
+        お薦めスコア #{score}
+        </div>
+        </div>
 
       %p 推薦対象：2015年秋期のアニメ作品
       %p 2015年10月~12月のアニメに関する呟きデータを元に、あなたが今までに呟いていないアニメを推薦します
