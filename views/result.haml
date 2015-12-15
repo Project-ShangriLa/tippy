@@ -19,7 +19,7 @@
     %div.container{:align => "center"}
       %h2= @id + "が今まで呟いた作品"
       - (@cf_data).each do |unit|
-        <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
+        <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235" onclick="window.open('#{@master[unit[:product_id]]['public_url']}')">
     %div.container{:align => "center"}
       %h2= @id + "にお薦めな作品"
       - (@prediction).each do |unit|
@@ -29,7 +29,7 @@
         - bar_name = 'info' if bar_score > 25
         - bar_name = 'success' if bar_score > 75
         <div style="float:left;">
-        <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
+        <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235" onclick="window.open('#{@master[unit[:product_id]]['public_url']}')">
         <div class="progress"  style="width:170px">
         <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%;color:#000000">
         Score:#{score}
@@ -44,7 +44,7 @@
         - bar_score = bar_score * -1 if bar_score < 0
         - bar_name = 'danger'
         <div style="float:left;">
-        <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235">
+        <img src="/image/#{unit[:product_id]}.jpg" class="img-rounded" width="170" height="235" onclick="window.open('#{@master[unit[:product_id]]['public_url']}')">
         <div class="progress"  style="width:170px;">
         <div class="progress-bar progress-bar-#{bar_name}" role="progressbar" aria-valuenow="#{bar_score}" aria-valuemin="0" aria-valuemax="100" style="width:#{bar_score}%;color:#000000">
         Score:#{score}
@@ -53,5 +53,6 @@
         </div>
 
       <p style="clear:both;">
+      %p ※画像をクリックすると各アニメの公式サイトに移動します
       %p 推薦対象：2015年秋期のアニメ作品
       %p 2015年10月~12月のアニメに関する呟きデータを元に、あなたにお薦めなアニメを推薦します
