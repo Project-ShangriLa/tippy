@@ -15,8 +15,8 @@ get '/' do
   haml :index
 end
 
-post '/inputid' do
-  @id = params[:inputId]
+get '/recommend' do
+  @id = params[:twid]
   twitter_name =  @id
   @master = settings.master
   @cf_data = []
