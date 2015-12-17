@@ -23,8 +23,11 @@ get '/recommend' do
   @prediction = []
   @un_prediction = []
 
-  DB = Sequel.mysql2('tippy1', :host=>'localhost', :user=>'root', :password=>'', :port=>'3306')
+  if @id.nil? || @id == ''
+    return 'NO INPUT'
+  end
 
+  DB = Sequel.mysql2('tippy1', :host=>'localhost', :user=>'root', :password=>'', :port=>'3306')
   id = DB[:twitter_user].filter(:name => twitter_name).select(:id).first
 
   if id != nil
