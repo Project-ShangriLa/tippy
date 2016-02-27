@@ -1,14 +1,13 @@
 @dir = Dir::pwd
 
-worker_processes 2 # CPUのコア数に揃える
+worker_processes 8 # CPUのコア数に揃える
 working_directory @dir
 
-timeout 120
+timeout 60
 
-pid "/var/unicorn.pid" #pidを保存するファイル
+pid "/var/unicorn.pid"
 
-# unicornは標準出力には何も吐かないのでログ出力を忘れずに
-stderr_path "#{@dir}log/unicorn.stderr.log"
-stdout_path "#{@dir}log/unicorn.stdout.log"
+stderr_path "#{@dir}/log/unicorn.stderr.log"
+stdout_path "#{@dir}/log/unicorn.stdout.log"
 
 listen "/var/unicorn.sock", :backlog => 1024
