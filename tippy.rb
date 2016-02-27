@@ -27,7 +27,8 @@ get '/recommend' do
     return 'NO INPUT'
   end
 
-  DB = Sequel.mysql2('tippy1', :host=>'localhost', :user=>'root', :password=>'', :port=>'3306')
+  #http://qiita.com/repon/items/9bb43c04c54b735e637f
+  DB = Sequel.mysql2('tippy1', :host=>'localhost', :user=>'root', :password=>'', :port=>'3306', timeout:'60')
   id = DB[:twitter_user].filter(:name => twitter_name).select(:id).first
 
   if id != nil
